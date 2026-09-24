@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "name": "llama3.2:3b",
+      "vllm_model": "meta-llama/Llama-3.2-3B-Instruct",
+      "tokenizer": "unsloth/Llama-3.2-3B-Instruct",
+      "quantization": null,
+      "description": "Llama 3.2 3B Instruct"
+    },
+    {
+      "name": "gemma4:e2b",
+      "vllm_model": "google/gemma-4-E2B-it",
+      "tokenizer": "google/gemma-4-E2B-it",
+      "quantization": null,
+      "description": "Gemma 4 E2B Instruct"
+    },
+    {
+      "name": "qwen3:4b-instruct",
+      "vllm_model": "Qwen/Qwen3-4B-Instruct-2507",
+      "tokenizer": "Qwen/Qwen3-4B-Instruct-2507",
+      "quantization": null,
+      "description": "Qwen 3 4B Instruct"
+    }
+  ]
+}
