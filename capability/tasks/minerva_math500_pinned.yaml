@@ -1,0 +1,41 @@
+# Pinned MATH-500 task based on the built-in minerva_math500 task.
+# Harness revision: d6de81643928d653435c431bae19945d41d32520
+# Inherits its four-shot prompt and scoring functions from the pinned harness.
+
+task: minerva_math500_pinned
+dataset_path: HuggingFaceH4/MATH-500
+dataset_kwargs:
+  revision: 6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be
+dataset_name: default
+
+output_type: generate_until
+training_split: null
+test_split: test
+
+process_docs: !function lm_eval.tasks.minerva_math.utils.process_docs
+doc_to_text: !function lm_eval.tasks.minerva_math.utils.doc_to_text
+doc_to_target: "{{answer if few_shot is undefined else solution}}"
+process_results: !function lm_eval.tasks.minerva_math.utils.process_results
+
+num_fewshot: 4
+fewshot_config:
+  sampler: first_n
+  samples: !function lm_eval.tasks.minerva_math.utils.list_fewshot_samples
+
+generation_kwargs:
+  until:
+    - "Problem:"
+  do_sample: false
+  temperature: 0
+  max_gen_toks: 1024
+
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+  - metric: math_verify
+    aggregation: mean
+    higher_is_better: true
+
+metadata:
+  version: 3.1
