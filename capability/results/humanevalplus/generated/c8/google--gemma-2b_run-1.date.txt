@@ -1,0 +1,6 @@
+started_utc=2026-11-18T13:42:28.588083+00:00
+finished_utc=2026-11-18T13:43:55.444027+00:00
+elapsed_seconds=86.856
+timing_scope=full_run
+samples_present_before=0
+samples_generated=164

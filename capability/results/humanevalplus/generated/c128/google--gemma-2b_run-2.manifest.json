@@ -1,0 +1,40 @@
+{
+  "model": "google/gemma-2b",
+  "endpoint": "http://127.0.0.1:8000/v1/completions",
+  "concurrency": 128,
+  "run": 2,
+  "dataset_version": "v0.1.10",
+  "dataset_md5": "fe585eb4df8c88d844eeb463ea4d0302",
+  "evalplus_commit": "e5d0ed0bab96280b60b637ec7f15b5e4841b0cb2",
+  "generation": {
+    "prompt": "exact HumanEval+ dataset prompt",
+    "temperature": 0,
+    "seed": 0,
+    "max_tokens": 768,
+    "stop": [
+      "<|endoftext|>",
+      "<|endofmask|>",
+      "</s>",
+      "\nif __name__",
+      "\ndef main(",
+      "\nprint(",
+      "\ndef ",
+      "\nclass ",
+      "\nimport ",
+      "\nfrom ",
+      "\nassert "
+    ],
+    "stop_handling": "local truncation after generation"
+  },
+  "task_count": 164,
+  "generated_sha256": "b1d3407502f1f673a0c50820c7b8d7ab278d86ce49733a8fd684bfd20b43b39f",
+  "completed_utc": "2026-11-18T13:49:40.411071+00:00",
+  "timing": {
+    "started_utc": "2026-11-18T13:49:27.382028+00:00",
+    "finished_utc": "2026-11-18T13:49:40.407324+00:00",
+    "elapsed_seconds": 13.025,
+    "timing_scope": "full_run",
+    "samples_present_before": 0,
+    "samples_generated": 164
+  }
+}

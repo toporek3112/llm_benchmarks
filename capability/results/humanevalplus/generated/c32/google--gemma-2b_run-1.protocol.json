@@ -1,0 +1,29 @@
+{
+  "model": "google/gemma-2b",
+  "endpoint": "http://127.0.0.1:8000/v1/completions",
+  "concurrency": 32,
+  "run": 1,
+  "dataset_version": "v0.1.10",
+  "dataset_md5": "fe585eb4df8c88d844eeb463ea4d0302",
+  "evalplus_commit": "e5d0ed0bab96280b60b637ec7f15b5e4841b0cb2",
+  "generation": {
+    "prompt": "exact HumanEval+ dataset prompt",
+    "temperature": 0,
+    "seed": 0,
+    "max_tokens": 768,
+    "stop": [
+      "<|endoftext|>",
+      "<|endofmask|>",
+      "</s>",
+      "\nif __name__",
+      "\ndef main(",
+      "\nprint(",
+      "\ndef ",
+      "\nclass ",
+      "\nimport ",
+      "\nfrom ",
+      "\nassert "
+    ],
+    "stop_handling": "local truncation after generation"
+  }
+}

@@ -1,0 +1,21 @@
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug HumanEval+ Evaluation",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/capability/scripts/humanevalplus_evaluate.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "args": [
+        "--model", "google/gemma-2b",
+        "--concurrency", "32",
+        "--run", "1",
+        "--yes-reset"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "generated_input": "capability/results/humanevalplus/generated/c8/google--gemma-2b_run-2.jsonl",
+  "generated_sha256": "a84e29bda667664e310b37730e87645361190f35598dbd9670d854e51dc1672a",
+  "evaluated_output": "capability/results/humanevalplus/evaluated/c8/google--gemma-2b_run-2_eval_results.json",
+  "evaluated_sha256": "e0dc569a468112bf0cfc513a007c7d9c7d4f04af43dd01b4684dc957d0c1e80b",
+  "dataset_md5": "fe585eb4df8c88d844eeb463ea4d0302",
+  "evalplus_commit": "e5d0ed0bab96280b60b637ec7f15b5e4841b0cb2",
+  "concurrency": 8,
+  "run": 2,
+  "vm": "humaneval-sandbox",
+  "baseline": "/var/lib/libvirt/images/humaneval-sandbox-runner-baseline.qcow2",
+  "network": "no libvirt network interface at boot",
+  "base_passed": 36,
+  "plus_passed": 28,
+  "total_tasks": 164,
+  "vm_runtime_seconds": 41.5,
+  "completed_utc": "2026-11-18T15:45:35.880775+00:00"
+}
