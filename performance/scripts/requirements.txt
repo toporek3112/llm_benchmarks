@@ -1,2 +1,0 @@
-pydantic>=2,<3
-typer>=0.16,<1
