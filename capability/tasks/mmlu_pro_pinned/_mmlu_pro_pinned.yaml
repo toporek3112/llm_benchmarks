@@ -1,0 +1,27 @@
+# Reproduction of EleutherAI MMLU-Pro group at harness revision
+# d6de81643928d653435c431bae19945d41d32520.
+# The local group name is intentionally different to avoid colliding with
+# the built-in mmlu_pro group.
+group: mmlu_pro_pinned
+task:
+  - mmlu_pro_pinned_biology
+  - mmlu_pro_pinned_business
+  - mmlu_pro_pinned_chemistry
+  - mmlu_pro_pinned_computer_science
+  - mmlu_pro_pinned_economics
+  - mmlu_pro_pinned_engineering
+  - mmlu_pro_pinned_health
+  - mmlu_pro_pinned_history
+  - mmlu_pro_pinned_law
+  - mmlu_pro_pinned_math
+  - mmlu_pro_pinned_other
+  - mmlu_pro_pinned_philosophy
+  - mmlu_pro_pinned_physics
+  - mmlu_pro_pinned_psychology
+aggregate_metric_list:
+  - aggregation: mean
+    metric: exact_match
+    weight_by_size: true
+    filter_list: custom-extract
+metadata:
+  version: 2.0
