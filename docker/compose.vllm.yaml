@@ -1,0 +1,22 @@
+services:
+  otel-agent:
+    command:
+      - --config=/etc/otelcol-contrib/base.yaml
+      - --config=/etc/otelcol-contrib/vllm.yaml
+    environment:
+      INFERENCE_HOST: ${INFERENCE_HOST:?Set INFERENCE_HOST to a unique inference host name}
+      VLLM_METRICS_TARGET: ${VLLM_METRICS_TARGET:-127.0.0.1:8000}
+    volumes:
+      - ./otel/otel-vllm.yaml:/etc/otelcol-contrib/vllm.yaml:ro
+      # - type: bind
+      #   source: ${VLLM_LOG_DIR:-./logs}
+      #   target: /var/log/vllm/native
+      #   read_only: true
+      #   bind:
+      #     create_host_path: false
+      # - type: bind
+      #   source: ${VLLM_DOCKER_LOG_DIR:-./logs}
+      #   target: /var/log/vllm/docker
+      #   read_only: true
+      #   bind:
+      #     create_host_path: false

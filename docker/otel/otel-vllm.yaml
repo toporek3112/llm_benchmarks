@@ -1,0 +1,49 @@
+receivers:
+  prometheus/vllm:
+    config:
+      scrape_configs:
+        - job_name: vllm
+          scrape_interval: 15s
+          scrape_timeout: 5s
+          metrics_path: /metrics
+          static_configs:
+            - targets: ["${env:VLLM_METRICS_TARGET}"]
+              labels:
+                inference_host: ${env:INFERENCE_HOST}
+
+  filelog/vllm_native:
+    include: [/var/log/vllm/native/vllm*.log]
+    include_file_path: true
+    start_at: end
+    storage: file_storage
+
+  filelog/vllm_docker:
+    include: [/var/log/vllm/docker/*-json.log]
+    include_file_path: true
+    start_at: end
+    storage: file_storage
+    operators:
+      - type: container
+        format: docker
+        add_metadata_from_filepath: false
+
+processors:
+  resource/vllm_logs:
+    attributes:
+      - key: service.name
+        value: vllm
+        action: upsert
+      - key: host.name
+        value: ${env:INFERENCE_HOST}
+        action: upsert
+
+service:
+  pipelines:
+    metrics/vllm:
+      receivers: [prometheus/vllm]
+      processors: [memory_limiter, batch]
+      exporters: [otlp/infra]
+    # logs/vllm:
+    #   receivers: [filelog/vllm_native, filelog/vllm_docker]
+    #   processors: [memory_limiter, resource/vllm_logs, batch]
+    #   exporters: [otlp/infra]

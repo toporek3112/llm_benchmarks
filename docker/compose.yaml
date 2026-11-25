@@ -1,0 +1,22 @@
+services:
+  otel-agent:
+    image: otel/opentelemetry-collector-contrib:0.147.0
+    # Linux host networking reaches both native and Docker-published loopback ports.
+    network_mode: host
+    user: "0:0"
+    restart: unless-stopped
+    mem_limit: 256m
+    environment:
+      OTLP_GRPC_ENDPOINT: ${OTLP_GRPC_ENDPOINT:-otel.nob.intern:50051}
+    volumes:
+      - ./otel/otel-base.yaml:/etc/otelcol-contrib/base.yaml:ro
+      - type: bind
+        source: ${OTLP_CA_FILE:-/etc/ssl/certs/ca-certificates.crt}
+        target: /etc/otelcol-contrib/infra-ca.pem
+        read_only: true
+        bind:
+          create_host_path: false
+      - otel-state:/var/lib/otelcol
+
+volumes:
+  otel-state:

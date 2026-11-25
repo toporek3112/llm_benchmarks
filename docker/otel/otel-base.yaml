@@ -1,0 +1,33 @@
+extensions:
+  file_storage:
+    directory: /var/lib/otelcol
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 192
+    spike_limit_mib: 48
+  batch:
+    timeout: 5s
+    send_batch_size: 512
+    send_batch_max_size: 1024
+
+exporters:
+  otlp/infra:
+    endpoint: ${env:OTLP_GRPC_ENDPOINT}
+    tls:
+      insecure: false
+      insecure_skip_verify: true
+    sending_queue:
+      storage: file_storage
+      queue_size: 300
+    retry_on_failure:
+      enabled: true
+
+service:
+  extensions: [file_storage]
+  telemetry:
+    logs:
+      level: info
+    metrics:
+      level: none
