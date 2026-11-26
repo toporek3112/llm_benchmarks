@@ -1,0 +1,8 @@
+started_utc=2026-11-25T19:43:06.860Z
+start_epoch_s=1795635786.860
+finished_utc=2026-11-25T19:44:35.649Z
+end_epoch_s=1795635875.649
+elapsed_seconds=88.789
+status=completed
+exit_code=0
+grace_seconds=120
